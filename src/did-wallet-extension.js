@@ -95,7 +95,7 @@ async function verifyMessage(signatureHex, msg){
 // }
 
 async function Timeout() {
-    const time = 12000;
+    const time = 15000;
     console.log('wait.....(' + time + ' ms)');
     return new Promise((resolve, reject) => {
         setTimeout(resolve, time, undefined)

@@ -33,7 +33,7 @@ const settings = {}
 
 function initSettings(network, client) {
 
-    const networkParams = config.listNetwork[config.currentNetwork];
+    const networkParams = config.listNetwork[network];
 
     console.log('initialize');
 

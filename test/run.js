@@ -19,9 +19,30 @@ const giverParams = require( './GiverContract.json');
 const valueForClientWalletFirst = 2000000000;
 const valueForClientWalletSecond = 1000000000;
 
+const arrayResultTest = [];
+
+function outputResultTest(msg, bool) {
+    console.log();
+    console.log('======================================================');
+    console.log(msg);
+
+    if(bool) {
+        console.log('success');
+    }else{
+        console.log('failed');
+    }
+    console.log('======================================================');
+    console.log();
+
+    arrayResultTest.push({
+        status: bool,
+        msg: msg
+    })
+}
+
 async function main() {
 
-    console.log('start test');
+    outputResultTest('start tests', true);
 
     core.initSettings("devNet", client);
 
@@ -51,7 +72,7 @@ async function main() {
         newDidDocumentJson
     );
 
-    if(!res) return;
+    outputResultTest('Test 1 - Create did smart-contract', res === true);
 
     const addressDidDocument = await core.getDidDocumentAddress(pubKeyWallet);
 
@@ -66,17 +87,18 @@ async function main() {
 
     console.log(res);
 
+    outputResultTest('Test 2 - resolve did', JSON.stringify(res) === JSON.stringify(newDidDocumentJson));
 
     newDidDocumentJson.createdAt = new Date().getTime().toString();
 
     res = await core.updateDIDDocument(walletDidAcc, addressDidDocument, newDidDocumentJson);
 
-    if(!res) return;
+    outputResultTest('Test 3 - update json did document', res === true);
 
     const newStatus = 0;
     res = await core.updateDidStatus(walletDidAcc, addressDidDocument, newStatus)
 
-    if(!res) return;
+    outputResultTest('Test 4 - update status of did document smart-contract', res === true);
 
     const walletDidParamsSecond = await deployWallet(valueForClientWalletSecond);
 
@@ -86,7 +108,7 @@ async function main() {
 
     res = await core.updateDidIssuerAddress(walletDidAcc, addressDidDocument, newIssuerAddress)
 
-    if(!res) return;
+    outputResultTest('Test 5 - update Issuer Address of did document smart-contract', res === true);
 
     const walletDidSecondAcc = new Account(ClientContract, {
         address: walletDidParamsSecond.address,
@@ -96,7 +118,9 @@ async function main() {
 
     res = await core.deleteDidDocument(walletDidSecondAcc, addressDidDocument)
 
-    if(!res) return;
+    outputResultTest('Test 6 - delete did document smart-contract', res === true);
+
+    const checkSignature = '1730b221318a335f494d5ebe89ee0e7e18cfde3dbba559043b21183938bd960c8f7c5795e0c0aefa0476cc65e66cfc69df441678e8db36427062310314e22f0d';
 
     const keysForSignData = giverParams.keys.keys;
 
@@ -111,11 +135,21 @@ async function main() {
 
     console.log(signature);
 
+    outputResultTest('Test 7 - sign data', checkSignature === signature.toString());
+
     const verify = await core.verifyMessage(signature, msg, keysForSignData.public);
 
     console.log(verify);
 
-    console.log('test completed');
+    outputResultTest('Test 8 - verify signature', verify === true);
+
+    console.log('tests are completed');
+
+    console.log('Result of tests');
+
+    arrayResultTest.forEach((el) => {
+        console.log(el.msg + ': ' + (el.status ? 'success' : 'failed'))
+    })
 }
 
 (async () => {

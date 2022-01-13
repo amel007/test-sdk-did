@@ -1,6 +1,4 @@
 {
-    "environment": "node",
-    "currentNetwork": "devNet",
     "listNetwork": {
         "devNet": {
             "dexRoot": "0:b199c648ae3f6d2b1a774d51f35b5af98a346672c91f1da9c1f1ba3a0a3d69d0",
