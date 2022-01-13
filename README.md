@@ -4,12 +4,12 @@ This SDK aims to help the development of integrations with DidStorage smart-cont
 
 ### Contents
 
-- [`src/did-client-core.js`](./src/did-client-core.js) - sdk uses TonClient(<a href="https://github.com/tonlabs/ton-client-js">@tonclient/core</a>) for node js and web front 
-  [Specification](./docs/spec-did-core.md)
-- [`src/did-wallet-extension.js`](./src/did-wallet-extension.js) - sdk uses EverWalletExtension(<a href="https://github.com/broxus/ton-inpage-provider">ton-inpage-provider</a>) 
-  [Specification](./docs/spec-did-extension.md)
+- [`src/did-client-core.js`](./src/did-client-core.js) - sdk uses TonClient(<a href="https://github.com/tonlabs/ton-client-js">@tonclient/core</a>) for node js and web front
+- [`src/did-wallet-extension.js`](./src/did-wallet-extension.js) - sdk uses EverWalletExtension(<a href="https://github.com/broxus/ton-inpage-provider">ton-inpage-provider</a>)
 
 ### Example use did-core for Node js
+
+[Specification](./docs/spec-did-core.md)
 
 ```javascript
 
@@ -37,6 +37,8 @@ async function main() {
 
 ### Example use did-core for Web
 
+[Specification](./docs/spec-did-core.md)
+
 ```javascript
 import {TonClient} from "@tonclient/core";
 
@@ -59,7 +61,12 @@ async function main() {
 }
 ```
 
+### Example use did-core for Node js or Web
+[Check file](./test/run.js)
+
 ### Example use did-extension for Web
+
+[Specification](./docs/spec-did-extension.md)
 
 ```javascript
 
