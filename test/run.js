@@ -11,7 +11,7 @@ const core = require('../src/did-client-core.js');
 
 const { GiverContract } = require("../src/contract-package/Giver.js");
 
-const { ClientContract } = require("../src/contract-package/ClientContract.js");
+const { ClientContract } = require("../src/contract-package/Client.js");
 
 const giverParams = require( './GiverContract.json');
 

@@ -1,4 +1,4 @@
-###DID-SDK
+## DID-SDK
 
 This SDK aims to help the development of integrations with DidStorage smart-contracts that use JavaScript.
 

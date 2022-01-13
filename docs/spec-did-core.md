@@ -1,8 +1,7 @@
-did-client-core.js
----
+## did-client-core.js
 
 ---
-* initSettings(network, client)
+### initSettings(network, client)
 
 initialize settings for sdk
 
@@ -10,13 +9,13 @@ initialize settings for sdk
     client<TonClient> - client for basic operations with smart-contracts ("@tonclient/core")
 
 ---
-* createNewDidDocumentJson(pubKey)
+### createNewDidDocumentJson(pubKey)
 
 create default didDocument json object
 
     pubKey<string> - public key of pair keys is id of didDocument
 
-return<object> json did Document
+`return<object> json did Document`
 
     {
         id: "did:everscale:28ba63cce65283cbccb368fea5ce49bc998cac156334dff20ad1ba262b2d0766",
@@ -35,7 +34,7 @@ return<object> json did Document
 
 ---
 
-* createDID(accWallet, pubKey, addressIssuer, clientKeys, didDocument)
+### createDID(accWallet, pubKey, addressIssuer, clientKeys, didDocument)
 
 Create and init new Did smart-contract for public key in DidStorage (everscale)
 
@@ -64,48 +63,48 @@ Create and init new Did smart-contract for public key in DidStorage (everscale)
         }
 
 
-return<bool> status of operation
+`return<bool> status of operation`
 
 ---
-* createDIDDefault(accWallet, pubKey, addressIssuer, clientKeys)
+### createDIDDefault(accWallet, pubKey, addressIssuer, clientKeys)
 
 Create and init new DidDocument smart-contract for public key in DidStorage (everscale) with Default Json DidDocument (use createNewDidDocumentJson)
     
     same params for createDID
 
-return<bool> status of operation
+`return<bool> status of operation`
 
 ---
 
-* getDidDocumentAddress(didMethod)
+### getDidDocumentAddress(didMethod)
 
 get address of DidDocument smart-contract from didStorage
 
     didMethod<string> - equals pubkey and id of DidDocument smart-contract
 
-return<address> address of DidDocument smart-contract
+`return<address> address of DidDocument smart-contract`
 
 ---
 
-* getDidFromMethod(pubKey)
+### getDidFromMethod(pubKey)
 
 get did from public key
 
     pubKey<string> - public key of pair keys is id of didDocument
 
-return<string> did
+`return<string> did`
 
     "did:everscale:28ba63cce65283cbccb368fea5ce49bc998cac156334dff20ad1ba262b2d0766"
 
 ---
 
-* resolveDIDDocument(did)
+### resolveDIDDocument(did)
 
 get didDocument json object from didStorage
     
     did<string> - "did:everscale:28ba63cce65283cbccb368fea5ce49bc998cac156334dff20ad1ba262b2d0766"
 
-return<object> didDocument json object
+`return<object> didDocument json object`
 
     {
         id: "did:everscale:28ba63cce65283cbccb368fea5ce49bc998cac156334dff20ad1ba262b2d0766",
@@ -124,7 +123,7 @@ return<object> didDocument json object
 
 ---
 
-* updateDIDDocument(accWallet, addressDidDoc, newDidDocument)
+### updateDIDDocument(accWallet, addressDidDoc, newDidDocument)
 
 change json didDocument in DidDocument smart-contract of DidStorage
 
@@ -146,11 +145,11 @@ change json didDocument in DidDocument smart-contract of DidStorage
             },
         }
 
-return<bool> status of operation
+`return<bool> status of operation`
 
 ---
 
-* updateDidStatus(accWallet, addressDidDoc, newStatus)
+### updateDidStatus(accWallet, addressDidDoc, newStatus)
 
 change status in DidDocument smart-contract of DidStorage
 
@@ -158,11 +157,11 @@ change status in DidDocument smart-contract of DidStorage
     addressDidDoc<address> - address of didDocument smart-contract (use getDidDocumentAddress)
     newStatus<int> - 0 or 1 (0 = inactive, 1 = active)
 
-return<bool> status of operation
+`return<bool> status of operation`
 
 ---
 
-* updateDidIssuerAddress(accWallet, addressDidDoc, newDidIssuerAddress)
+### updateDidIssuerAddress(accWallet, addressDidDoc, newDidIssuerAddress)
 
 change owner (issuerAddr) in DidDocument smart-contract of DidStorage
 
@@ -170,33 +169,33 @@ change owner (issuerAddr) in DidDocument smart-contract of DidStorage
     addressDidDoc<address> - address of didDocument smart-contract (use getDidDocumentAddress)
     newDidIssuerAddress<address> - new owner of didDocument smart-contract (issuerAddr in smart-contract)
 
-return<bool> status of operation
+`return<bool> status of operation`
 
 ---
 
-* deleteDidDocument(accWallet, addressDidDoc)
+### deleteDidDocument(accWallet, addressDidDoc)
 
 delete DidDocument smart-contract of DidStorage
 
     accWallet<Account> - Account ("@tonclient/appkit") of wallet is owner of didDocument smart-contract (issuerAddr in smart-contract)
     addressDidDoc<address> - address of didDocument smart-contract (use getDidDocumentAddress)
 
-return<bool> status of operation
+`return<bool> status of operation`
 
 ---
 
-* signData(msg, secretKey)
+### signData(msg, secretKey)
 
 sign msg with secret key
 
     msg<string> - message that need sign
     secretKey<string> - secret key of pair keys
 
-return<string> hex signature
+`return<string> hex signature`
 
 ---
 
-* verifyMessage(signatureHex, msg, publicKey)
+### verifyMessage(signatureHex, msg, publicKey)
 
 check signature
 
@@ -204,4 +203,4 @@ check signature
     msg<string> - message that need sign
     publicKey<string> - public key of pair keys
 
-return<bool> is valid signature or not
+`return<bool> is valid signature or not`
